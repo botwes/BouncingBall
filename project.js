@@ -4,11 +4,15 @@ var posy=0;
 var vx =1;
 var vy =1;
 let multi = 1;
+gw = 0;
+gh= 0;
 function init()
 {
     var ctx = document.getElementById('c1').getContext('2d');
     ctx.canvas.width = window.innerWidth;
     ctx.canvas.height= window.innerHeight;
+    gw = ctx.canvas.width;
+    gh = ctx.canvas.height;
     const slider = document.getElementById("myRange");
     multi = slider.value;
     vx = 1*multi;
@@ -27,7 +31,7 @@ function draw()
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Restore the transform
     ctx.restore();
-    drawCircle(ctx,0,0,50,'pink','black',1);
+    drawCircle(ctx,50,50,50,'pink','black',1);
     //ctx.drawImage(circ,0,0);
     Translate(vx,vy,ctx);
     window.requestAnimationFrame(draw);
@@ -50,19 +54,20 @@ function getRandomInt(min, max)
 function Vector()
 {
     var ctx = document.getElementById('c1').getContext('2d');
-    if(posx+vx>=ctx.canvasWidth)
+
+    if(posx+vx+50>=gw)
     {
         vx = -getRandomInt(1,5)*multi;
     }
-    else if(posx+vx<=0)
+    else if(posx+vx+50<=0)
     {
         vx = getRandomInt(1,5)*multi;
     }
-    else if(posy+vy>=ctx.canvasHeight)
+    else if(posy+vy+50>=gh)
     {
         vy = -getRandomInt(1,5)*multi;
     }
-    else if(posy+vy<=0)
+    else if(posy+vy+50<=0)
     {
         vy = getRandomInt(1,5)*multi;
     }

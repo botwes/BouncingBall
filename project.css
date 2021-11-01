@@ -3,9 +3,14 @@ body
     overflow-x:hidden;
     overflow-y:hidden;
     background-color:lightcoral;
-    margin:0%;
-    padding:0%;
+    margin-right:100px;
+    padding:0px;
     height:100%;
+    width:100%;
+}
+.canvasContainer
+{
+    text-align:center;
     width:100%;
 }
 .canvas
@@ -13,7 +18,20 @@ body
     border-radius: 1px;
     border-style:solid;
     border-color:blue;
-    margin:0%;
-    padding:0%;
+    margin: 0px;
+    padding:0px;
     background-color:white;
+    max-height:90%;
+    max-width:90%;
+    justify-content:center;
+}
+.slidecontainer
+{
+    justify-content:center;
+    text-align:center;
+}
+.valcontainer
+{
+    justify-content:center;
+    text-align:center;
 }
