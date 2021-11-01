@@ -22,6 +22,9 @@ function init()
 }
 function draw()
 {
+    multi = slider.value;
+    vy = Math.sign(vy)*(5*multi);
+    vx = Math.sign(vx)*(5*multi);
     var ctx = document.getElementById('c1').getContext('2d');
     ctx.globalCompositeOperation = 'destination-over';
     // Store the current transformation matrix
