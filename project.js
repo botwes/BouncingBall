@@ -26,7 +26,7 @@ function draw()
     ctx.globalCompositeOperation = 'destination-over';
     ctx.clearRect(0,0,1920,1080);
     Translate(vx,vy,ctx);
-    ctx.drawImage(circ,1,1);
+    ctx.drawImage(circ,0,0);
     window.requestAnimationFrame(draw);
     Vector();
     console.log("x: "+posx+"y: "+posy); 
