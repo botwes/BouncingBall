@@ -59,7 +59,7 @@ function Vector()
     {
         vx = -getRandomInt(1,5)*multi;
     }
-    else if(posx+vx+50<0)
+    else if(posx+vx-50<0)
     {
         vx = getRandomInt(1,5)*multi;
     }
@@ -67,7 +67,7 @@ function Vector()
     {
         vy = -getRandomInt(1,5)*multi;
     }
-    else if(posy+vy+50<0)
+    else if(posy+vy-50<0)
     {
         vy = getRandomInt(1,5)*multi;
     }
