@@ -1,41 +1,44 @@
 var circ = new Image()
 var posx=0;
 var posy=0;
-var vx =5;
-var vy =5;
-function creatediv()
-{
-    let page = document.getElementById('d1');
-    for(i=0;i<10;i++)
-    {
-        var d = document.createElement("div");
-        d.innerHTML= "Hey";
-        page.appendChild(d);
-    }
-}
+var vx =1;
+var vy =1;
+let multi = 1;
 function init()
 {
-
+    var ctx = document.getElementById('c1').getContext('2d');
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height= window.innerHeight;
+    const slider = document.getElementById("myRange");
+    multi = slider.value;
+    vx = 1*multi;
+    vy = 1*multi;
     circ.src= 'circle.png';
     window.requestAnimationFrame(draw)   
 }
 function draw()
 {
-    var time = new Date();
     var ctx = document.getElementById('c1').getContext('2d');
     ctx.globalCompositeOperation = 'destination-over';
-    ctx.clearRect(0,0,1920,1080);
+    // Store the current transformation matrix
+    ctx.save();
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    // Restore the transform
+    ctx.restore();
+    drawCircle(ctx,0,0,50,'pink','black',1);
+    //ctx.drawImage(circ,0,0);
     Translate(vx,vy,ctx);
-    ctx.drawImage(circ,0,0);
     window.requestAnimationFrame(draw);
     Vector();
-    console.log("x: "+posx+"y: "+posy); 
 }
 function Translate(x,y,ctx)
 {
     posx=posx+x;
     posy=posy+y;
     ctx.translate(x,y);
+    console.log("X: "+posx+"Y: "+posy);
   
 }
 function getRandomInt(min, max) 
@@ -46,20 +49,35 @@ function getRandomInt(min, max)
 }
 function Vector()
 {
-    if(posx+vx>=1920)
+    var ctx = document.getElementById('c1').getContext('2d');
+    if(posx+vx>=ctx.canvasWidth)
     {
-        vx = -getRandomInt(1,5);
+        vx = -getRandomInt(1,5)*multi;
     }
     else if(posx+vx<=0)
     {
-        vx = getRandomInt(1,5);
+        vx = getRandomInt(1,5)*multi;
     }
-    else if(posy+vy>=1080)
+    else if(posy+vy>=ctx.canvasHeight)
     {
-        vy = -getRandomInt(1,5);
+        vy = -getRandomInt(1,5)*multi;
     }
     else if(posy+vy<=0)
     {
-        vy = getRandomInt(1,5);
+        vy = getRandomInt(1,5)*multi;
     }
 }
+function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth) 
+{
+    ctx.beginPath()
+    ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+    if (fill) {
+      ctx.fillStyle = fill
+      ctx.fill()
+    }
+    if (stroke) {
+      ctx.lineWidth = strokeWidth
+      ctx.strokeStyle = stroke
+      ctx.stroke()
+    }
+  }

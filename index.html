@@ -3,8 +3,29 @@
     <link rel="stylesheet" href="project.css">
 </head>
 <body>
-    <canvas id="c1" class="canvas" width="1920" height="1080"></canvas>
+    <div class="slidecontainer">
+        
+        <input type="range" min="1" max="10" value="1" class="slider" id="myRange">
+        <button type="button" onclick="init()">Start</button>
+    </div>
+    <div id= "valc" class="valcontainer">
+      Speed Multiplier:
+      <div id="value">1</div>
+    </div>
+    <canvas id="c1" class="canvas"></canvas>
     <script>
-        init();
+      //  init();
     </script>
+    
+    <script>
+        const slider = document.getElementById("myRange");
+        const val = document.getElementById("value");
+        val.innerHTML=slider.value;
+        slider.oninput=function()
+        {
+            val.innerHTML= this.value;
+
+        }
+    </script>
+   
 </body>
