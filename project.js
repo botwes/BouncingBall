@@ -15,8 +15,8 @@ function init()
     gh = ctx.canvas.height;
     const slider = document.getElementById("myRange");
     multi = slider.value;
-    vx = 1*multi;
-    vy = 1*multi;
+    vx = 5*multi;
+    vy = 5*multi;
     circ.src= 'circle.png';
     window.requestAnimationFrame(draw)   
 }
@@ -57,19 +57,19 @@ function Vector()
 
     if(posx+vx+50>gw)
     {
-        vx = -getRandomInt(1,5)*multi;
+        vx = -vx;
     }
     else if(posx+vx-50<0)
     {
-        vx = getRandomInt(1,5)*multi;
+        vx = Math.abs(vx);
     }
     else if(posy+vy+50>gh)
     {
-        vy = -getRandomInt(1,5)*multi;
+        vy = -vy;
     }
     else if(posy+vy-50<0)
     {
-        vy = getRandomInt(1,5)*multi;
+        vy = Math.abs(vy);
     }
 }
 function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth) 
