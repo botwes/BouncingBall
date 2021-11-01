@@ -55,19 +55,19 @@ function Vector()
 {
     var ctx = document.getElementById('c1').getContext('2d');
 
-    if(posx+vx+50>=gw)
+    if(posx+vx+50>gw)
     {
         vx = -getRandomInt(1,5)*multi;
     }
-    else if(posx+vx+50<=0)
+    else if(posx+vx+50<0)
     {
         vx = getRandomInt(1,5)*multi;
     }
-    else if(posy+vy+50>=gh)
+    else if(posy+vy+50>gh)
     {
         vy = -getRandomInt(1,5)*multi;
     }
-    else if(posy+vy+50<=0)
+    else if(posy+vy+50<0)
     {
         vy = getRandomInt(1,5)*multi;
     }
@@ -75,7 +75,7 @@ function Vector()
 function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth) 
 {
     ctx.beginPath()
-    ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+    ctx.arc(vx, vy, radius, 0, 2 * Math.PI, false)
     if (fill) {
       ctx.fillStyle = fill
       ctx.fill()
@@ -85,4 +85,4 @@ function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth)
       ctx.strokeStyle = stroke
       ctx.stroke()
     }
-  }
+}
